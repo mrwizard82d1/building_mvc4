@@ -1,2 +1,4 @@
 # building_mvc4
-Just a sample
+
+Code from PluralSight course, "Building Applications with ASP.NET MVC 4."
+
