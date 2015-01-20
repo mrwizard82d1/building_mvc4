@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Web.Mvc;
+using OdeToFood.Filters;
 
 namespace OdeToFood.Controllers
 {
@@ -10,6 +11,7 @@ namespace OdeToFood.Controllers
         //
         // GET: /Cuisine/
 
+        [Log]
         public ActionResult Search(string name = "french")
         {
             // Throwing an exception with default global filter invokes the
