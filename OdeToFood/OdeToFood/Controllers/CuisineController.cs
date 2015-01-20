@@ -16,7 +16,7 @@ namespace OdeToFood.Controllers
             // prevent this but a call to Content() assumes you know what
             // you are doing. You have been warned!
             var encodedName = Server.HtmlEncode(name);
-            return RedirectToAction("Index", "Home", new {name = name});
+            return RedirectToRoute("Default", new {controller = "Home", action = "About"});
 
         }
     }
