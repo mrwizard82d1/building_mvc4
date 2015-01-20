@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿
 using System.Web.Mvc;
 
 namespace OdeToFood.Controllers
@@ -13,11 +13,11 @@ namespace OdeToFood.Controllers
         // data, query string or posted form data).
         public ActionResult Search(string name = "french")
         {
-            // Server.MapPath() converts from virtual path to actual path on 
-            // the **server** filesystem. The symbol ~ identifies the 
-            // application root (OdeToFood).
+            // Returning JSON is fairly simple but one **must** allow this
+            // request to return JSON.
             var encodedName = Server.HtmlEncode(name);
-            return File(Server.MapPath("~/Content/Site.css"), "text/css");
+            return Json(new {Message = encodedName, Author = "Lawrence"},
+                JsonRequestBehavior.AllowGet);
         }
     }
 }
