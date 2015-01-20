@@ -8,16 +8,14 @@ namespace OdeToFood.Controllers
         //
         // GET: /Cuisine/
 
-        // Including parameter named "name" causes MVC framework to try to 
-        // find a parameter named "name" in ANY of the web request (routing
-        // data, query string or posted form data).
+        // Adding the http verb as an attribute means this controller is 
+        // only reached for that specific verb.
+        [HttpPost]
         public ActionResult Search(string name = "french")
         {
-            // Returning JSON is fairly simple but one **must** allow this
-            // request to return JSON.
+            // Back to returning simple content.
             var encodedName = Server.HtmlEncode(name);
-            return Json(new {Message = encodedName, Author = "Lawrence"},
-                JsonRequestBehavior.AllowGet);
+            return Content(encodedName);
         }
     }
 }
