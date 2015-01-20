@@ -8,7 +8,10 @@ namespace OdeToFood
         // request in the entire **application**.
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            // Removing this line causes an error page to be displayed
+            // (although the details seen by the user are now different 
+            // because we have specified <customErrors mode="On"/>).
+            // filters.Add(new HandleErrorAttribute());
         }
     }
 }
