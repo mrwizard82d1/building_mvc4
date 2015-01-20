@@ -11,8 +11,16 @@ namespace OdeToFood
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            // Ignore routing to serve "virtual files"
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            // Remember: more specific to more general
 
+            // /cuisine/french
+            routes.MapRoute("Cuisine", "cuisine/{name}",
+                new {controller = "Cuisine", action = "Search", name = UrlParameter.Optional});
+
+            // /
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
