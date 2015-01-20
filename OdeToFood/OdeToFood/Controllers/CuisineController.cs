@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Web.Mvc;
 
 namespace OdeToFood.Controllers
 {
@@ -12,12 +13,11 @@ namespace OdeToFood.Controllers
         // data, query string or posted form data).
         public ActionResult Search(string name = "french")
         {
-            // HtmlEncode prevents cross-site scripting attack. (Razor will
-            // prevent this but a call to Content() assumes you know what
-            // you are doing. You have been warned!
+            // Server.MapPath() converts from virtual path to actual path on 
+            // the **server** filesystem. The symbol ~ identifies the 
+            // application root (OdeToFood).
             var encodedName = Server.HtmlEncode(name);
-            return RedirectToRoute("Default", new {controller = "Home", action = "About"});
-
+            return File(Server.MapPath("~/Content/Site.css"), "text/css");
         }
     }
 }
