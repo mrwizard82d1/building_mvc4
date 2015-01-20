@@ -8,10 +8,8 @@ namespace OdeToFood.Controllers
         //
         // GET: /Cuisine/
 
-        // Without HTTP verbs, invoking search is ambiguous. (Note that the
-        // MVC framework finds the request ambiguous even though R#
-        // reports that the version of Search with the optional parameter
-        // is **hidden** by the parameterless version.)
+        // Using HTTP verbs allows the framework to resolve the ambiguity.
+        [HttpPost]
         public ActionResult Search(string name = "french")
         {
             // Back to returning simple content.
@@ -19,6 +17,7 @@ namespace OdeToFood.Controllers
             return Content(encodedName);
         }
 
+        [HttpGet]
         public ActionResult Search()
         {
             return Content("Search!");
