@@ -1,11 +1,10 @@
 ﻿
+using System;
 using System.Web.Mvc;
 
 namespace OdeToFood.Controllers
 {
-    // The Authorize attribute causes MVC to require authorization 
-    // before accessing **every** action of this controller.
-    [Authorize]
+    // [Authorize]
     public class CuisineController : Controller
     {
         //
@@ -13,7 +12,14 @@ namespace OdeToFood.Controllers
 
         public ActionResult Search(string name = "french")
         {
-            // Back to returning simple content.
+            // Throwing an exception with default global filter invokes the
+            // standard error handler. Invoking /cuisine then results in the 
+            // ASP.NET "yellow screen of death" (but only when invoked from 
+            // the same machine which is executing the server). Useful to a 
+            // developer but also dangerous because it reveals information 
+            // to a bad guy.
+            throw  new Exception("Something terrible has happened. Oh, the humanity!");
+
             var encodedName = Server.HtmlEncode(name);
             return Content(encodedName);
         }
