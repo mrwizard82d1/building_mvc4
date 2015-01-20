@@ -10,7 +10,7 @@ namespace OdeToFood.Controllers
 
         // Adding the http verb as an attribute means this controller is 
         // only reached for that specific verb.
-        [HttpPost]
+        [HttpGet]
         public ActionResult Search(string name = "french")
         {
             // Back to returning simple content.
