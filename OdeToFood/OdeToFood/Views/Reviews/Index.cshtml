@@ -4,10 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<!--
-Literal text (not prefaced by '@@') is simply included in the page. 
--->
+@*
+Note that the text '@*' introduces a comment that **only** appears
+in the .cshtml file. But remember that the Razor engine converts these
+lines to whitespace in the page.
+*@
+
+@*
+Literal text (not prefaced by '@') is simply included in the page.
+*@
+
 <h2>The Latest Reviews</h2>
+
+@*We can combine literal text with C# code (introduced by '@')*@
+We are showing the latest @Model.Count() reviews.
 
 <p>
     @Html.ActionLink("Create New", "Create")
