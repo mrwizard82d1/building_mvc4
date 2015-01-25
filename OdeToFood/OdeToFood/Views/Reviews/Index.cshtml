@@ -39,8 +39,14 @@ We are showing the latest @Model.Count() reviews.
         
         Simply adding it will work, right? (Three guesses - and your first
         two do not count.)
+        
+        Razor actually interprets the first right curly brace as the close
+        of the C# expression. The second curly brace is interpreted as 
+        literal text displayed after **all** the reviews.
+        
+        To fix this, use the "@:" "trick" again.
     *@
-    }
+    @:}
 }
 
 <p>
