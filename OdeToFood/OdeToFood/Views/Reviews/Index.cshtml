@@ -47,7 +47,14 @@ We are showing the latest @Model.Count() reviews.
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.City)
+            @*@Html.DisplayFor(modelItem => item.City)*@
+            @*
+                However, Razor cannot prevent a developer from doing
+                something stupid. Remember that a call to Html.Raw()
+                will produce a string version of its arguments - even
+                if it is a script to steal cookies or credit card numbers!
+            *@
+            @Html.Raw(item.City)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Country)
