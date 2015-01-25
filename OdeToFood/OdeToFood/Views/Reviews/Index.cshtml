@@ -16,7 +16,7 @@ We are showing the latest @Model.Count() reviews.
     literal text.
 *@
 
-@foreach (var item in Model) 
+@foreach (var item in Model)
 {
     @*
         Suppose I want the literal text, "Review", to appear before each
@@ -32,6 +32,15 @@ We are showing the latest @Model.Count() reviews.
         <span>@item.Rating</span>
         <p>@item.City, @item.Country</p>
     </div>
+
+    @*
+        Suppose, for some obscure reason known only to the Web page 
+        designer, I want to follow each review with a right curly brace.
+        
+        Simply adding it will work, right? (Three guesses - and your first
+        two do not count.)
+    *@
+    }
 }
 
 <p>
