@@ -54,6 +54,13 @@ We are showing the latest @Model.Count() reviews.
         <th></th>
     </tr>
 
+    @*
+        Note that inside a Razor code block (the body of the following
+        foreach loop), one can freely transition from C# to literal code
+        and vice versa. The text, "<tr>" introduces literal page text. The
+        terminating right curly brace is C# code.
+    *@
+
 @foreach (var item in Model) {
     <tr>
         <td>
