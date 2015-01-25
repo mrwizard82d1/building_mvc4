@@ -54,8 +54,13 @@ We are showing the latest @Model.Count() reviews.
         </td>
         <td>
             @*@Html.DisplayFor(modelItem => item.Rating)*@
-            @* An example of implicit Razor code expression. *@
-            @item.Rating
+            @* 
+                An example of implicit Razor code expression. 
+            
+                Razor interprets the following expression as C# code
+                followed by the literal text " / 10".
+            *@
+            @item.Rating / 10
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
