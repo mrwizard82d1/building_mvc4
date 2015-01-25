@@ -16,10 +16,10 @@ Literal text (not prefaced by '@') is simply included in the page.
 
 <h2>The Latest Reviews</h2>
 
-@* 
-We can can access any property - not simply the model. So be careful!
+@*
+We can combine literal text with C# code (introduced by '@')
 *@
-@VirtualPath
+We are showing the latest @Model.Count() reviews.
 
 <p>
     @Html.ActionLink("Create New", "Create")

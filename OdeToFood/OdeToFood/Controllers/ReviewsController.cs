@@ -118,7 +118,10 @@ namespace OdeToFood.Controllers
             {
                 Id = 2,
                 Name = "Marrakesh",
-                City = "D. C.",
+                // Demonstrating how Razor helps prevent cross-site 
+                // scripting (xss) attacks by URL-encoding all data
+                // in C# expressions.
+                City = "<script>alert('xss');</script>",
                 Country = "USA",
                 Rating = 10
             },
