@@ -70,6 +70,18 @@ We are showing the latest @Model.Count() reviews.
                 **explicit** expressions again.
             *@
             R@(item.Rating)
+            @*
+                Another problem might occur with Twitter handles, for
+                example, @OdeToCode.
+                
+                Razor **will** attempt to interpret this Twitter handle
+                as a code expression. Oops!
+                
+                Note that Visual Studio (2013) recognizes that the 
+                expression "@OdeToCode" has a problem. (The text 
+                "OdeToCode" is in red. One can still try to build....
+            *@
+            @OdeToCode
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
