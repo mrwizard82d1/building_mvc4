@@ -18,6 +18,11 @@ We are showing the latest @Model.Count() reviews.
 
 @foreach (var item in Model) 
 {
+    @*
+        Suppose I want the literal text, "Review", to appear before each
+        review. I simply add the literal text, right?
+    *@
+    Review
     <div class="review">
         <h4>@item.Name</h4>
         <span>@item.Rating</span>
