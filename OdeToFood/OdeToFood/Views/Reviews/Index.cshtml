@@ -79,9 +79,17 @@ We are showing the latest @Model.Count() reviews.
                 
                 Note that Visual Studio (2013) recognizes that the 
                 expression "@OdeToCode" has a problem. (The text 
-                "OdeToCode" is in red. One can still try to build....
+                "OdeToCode" is in red. 
+                
+                One can still try to build....
+                ...The build will succeed.
+                But the rendered page will describe a compilation error!
+                
+                We can repair this issue by escaping the '@' sign (with
+                another '@' sign). Razor will interpret this expression
+                as literal text.
             *@
-            @OdeToCode
+            @@OdeToCode
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
