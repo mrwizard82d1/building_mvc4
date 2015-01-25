@@ -1,122 +1,30 @@
 ﻿@model IEnumerable<OdeToFood.Models.RestaurantReview>
 
-@*
-    The following is a Razor code block. Within a block, I can place any
-    and as much code as I want. However, Razor will not place any results
-    from the code block in the rendered page, it is only evaluated for
-    its side-effects (such as setting the Title property of the ViewBag
-    instance).
-    
-    Creating a variable inside a code block makes that variable available
-    anywhere in the template following its declaration.
-*@
 @{
     ViewBag.Title = "Index";
-    var firstReview = Model.First();
 }
-
-@firstReview.Name
-
-@*
-Note that the text '@*' introduces a comment that **only** appears
-in the .cshtml file. But remember that the Razor engine converts these
-lines to whitespace in the page.
-*@
-
-@*
-Literal text (not prefaced by '@') is simply included in the page.
-*@
 
 <h2>The Latest Reviews</h2>
 
-@*
-We can combine literal text with C# code (introduced by '@')
-*@
 We are showing the latest @Model.Count() reviews.
+
+@*
+    I had not noticed this before, but one **must** begin a foreach 
+    statement with an '@' sign; that is, @foreach. If one forgets (and I
+    will forget), the compiler complains that the iteration variable is
+    not recognized (because it is treating "foreach (var item....") as
+    literal text.
+*@
+
+@foreach (var item in Model) 
+{
+    <div class="review">
+        <h4>@item.Name</h4>
+        <span>@item.Rating</span>
+        <p>@item.City, @item.Country</p>
+    </div>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th></th>
-    </tr>
-
-    @*
-        Note that inside a Razor code block (the body of the following
-        foreach loop), one can freely transition from C# to literal code
-        and vice versa. The text, "<tr>" introduces literal page text. The
-        terminating right curly brace is C# code.
-    *@
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.Rating)*@
-            @* 
-                A couple of other edge cases for Razor.
-                
-                I intend to prefix the rating with the letter 'R.' Razor 
-                thinks the following expression is simply literal text.
-                
-                Razor actually thinks the following text is an email
-                address ("name@company.com"). When interpreting text 
-                containing '@'-signs, Razor asks, "Is this an email 
-                address?" If it looks like an email address, Razor treats
-                it as literal text.
-                
-                To correctly render ratings as "R7", I must utilize 
-                **explicit** expressions again.
-            *@
-            R@(item.Rating)
-            @*
-                Another problem might occur with Twitter handles, for
-                example, @OdeToCode.
-                
-                Razor **will** attempt to interpret this Twitter handle
-                as a code expression. Oops!
-                
-                Note that Visual Studio (2013) recognizes that the 
-                expression "@OdeToCode" has a problem. (The text 
-                "OdeToCode" is in red. 
-                
-                One can still try to build....
-                ...The build will succeed.
-                But the rendered page will describe a compilation error!
-                
-                We can repair this issue by escaping the '@' sign (with
-                another '@' sign). Razor will interpret this expression
-                as literal text.
-            *@
-            @@OdeToCode
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
