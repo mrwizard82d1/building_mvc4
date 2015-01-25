@@ -65,8 +65,11 @@ We are showing the latest @Model.Count() reviews.
                 containing '@'-signs, Razor asks, "Is this an email 
                 address?" If it looks like an email address, Razor treats
                 it as literal text.
+                
+                To correctly render ratings as "R7", I must utilize 
+                **explicit** expressions again.
             *@
-            R@item.Rating
+            R@(item.Rating)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
