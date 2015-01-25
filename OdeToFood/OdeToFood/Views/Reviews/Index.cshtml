@@ -6,10 +6,16 @@
     from the code block in the rendered page, it is only evaluated for
     its side-effects (such as setting the Title property of the ViewBag
     instance).
+    
+    Creating a variable inside a code block makes that variable available
+    anywhere in the template following its declaration.
 *@
 @{
     ViewBag.Title = "Index";
+    var firstReview = Model.First();
 }
+
+@firstReview.Name
 
 @*
 Note that the text '@*' introduces a comment that **only** appears
