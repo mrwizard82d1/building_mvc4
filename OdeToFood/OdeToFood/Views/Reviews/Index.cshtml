@@ -18,35 +18,11 @@ We are showing the latest @Model.Count() reviews.
 
 @foreach (var item in Model)
 {
-    @*
-        Suppose I want the literal text, "Review", to appear before each
-        review. I simply add the literal text, right?
-        
-        Actually, no. If the literal text **does not** appear inside an
-        HTML element, one must tell Razor to treat it as literal text by
-        prefacing it with "@:".
-    *@
-    @:Review
     <div class="review">
         <h4>@item.Name</h4>
         <span>@item.Rating</span>
         <p>@item.City, @item.Country</p>
     </div>
-
-    @*
-        Suppose, for some obscure reason known only to the Web page 
-        designer, I want to follow each review with a right curly brace.
-        
-        Simply adding it will work, right? (Three guesses - and your first
-        two do not count.)
-        
-        Razor actually interprets the first right curly brace as the close
-        of the C# expression. The second curly brace is interpreted as 
-        literal text displayed after **all** the reviews.
-        
-        To fix this, use the "@:" "trick" again.
-    *@
-    @:}
 }
 
 <p>
