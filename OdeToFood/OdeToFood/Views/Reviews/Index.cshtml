@@ -2,12 +2,18 @@
 
 @{
     ViewBag.Title = "Index";
-    
+
     @*
         One can also specify the starting layout file in any .cshtml file.
+        
+        If one sets the file to null, this view **will not** use a layout
+        page.
+        
+        The view will now display, but it will "look dull" because it
+        has no layout page.
     *@
 
-    Layout = "~/Views/Shared/_Layout3.cshtml";
+    Layout = null;
 }
 
 <h2>The Latest Reviews</h2>
