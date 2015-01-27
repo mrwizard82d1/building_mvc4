@@ -36,7 +36,11 @@
             </div>
         </header>
         <div id="body">
-           @RenderSection("featured", required: false)
+            @* 
+                Not including a required section will produce an error
+                displayed in the browser.
+            *@
+            @RenderSection("featured", required: true)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
