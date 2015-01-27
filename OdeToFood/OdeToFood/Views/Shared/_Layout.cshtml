@@ -37,10 +37,9 @@
         </header>
         <div id="body">
             @* 
-                Not including a required section will produce an error
-                displayed in the browser.
+                Moving a section on the layout view moves it on all
+                subsidiary views.
             *@
-            @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
@@ -48,6 +47,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">         
+                    @RenderSection("featured", required: false)
                                 <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
                 </div>
             </div>
